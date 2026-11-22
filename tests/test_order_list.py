@@ -22,7 +22,7 @@ class TestOrderList:
         assert number_after > number_up_to
 
     @allure.title('при создании нового заказа счётчик «Выполнено за сегодня» увеличивается')
-    def test_When_a_new_order_created_completed_today_counter_increases(self,authorized_user):
+    def test_when_a_new_order_created_completed_today_counter_increases(self,authorized_user):
         main_pages = MainPage(authorized_user)
         order_list = OrderList(authorized_user)
         main_pages.open_website()

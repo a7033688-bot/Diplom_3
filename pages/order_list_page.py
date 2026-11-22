@@ -1,5 +1,4 @@
 import allure
-from selenium.webdriver.support import expected_conditions as EC
 from locators.order_list_pages_locators import Order
 from pages.base_page import BasePages
 
@@ -12,19 +11,16 @@ class OrderList(BasePages):
 
     @allure.step('переход по клику на кнопку Конструктор в ленте заказов')
     def click_to_constructor_button(self):
-        self.wait.until(EC.element_to_be_clickable(self.locators.constructor_button)).click()
-
+        self.click(self.locators.constructor_button)
+    
     @allure.step('получаем число счетчика оформленно за все время до оформления заказа')
     def we_receive_meter_number_registered_for_entire_period(self):
-        element = self.wait.until(EC.visibility_of_element_located(self.locators.completed_in_total))
-        return element.text
+        return self.get_text(self.locators.completed_in_total)
 
     @allure.step('получаем число счетчика оформленно за сегодня до оформления заказа')
     def we_receive_counter_value_registered_today_before_placing_order(self):
-        element = self.wait.until(EC.visibility_of_element_located(self.locators.orders_completed_during_day))
-        return element.text
+        return self.get_text(self.locators.orders_completed_during_day)
 
     @allure.step('смотрим заказы в работе')
     def we_re_reviewing_current_orders(self):
-        element = self.wait.until(EC.visibility_of_element_located(self.locators.orders_being_processed))
-        return element.text
+        return self.get_text(self.locators.orders_being_processed)
