@@ -50,8 +50,6 @@ class MainPage(BasePages):
 
     @allure.step('запоминаем номер заказа')
     def we_remember_order_number(self):
-        element = self.wait_for_visible(self.locators.order_number)
-        self.wait.until(lambda d: element.text if element.text != '9999' else False)
-        return element.text
+        return self.wait_for_text(self.locators.order_number, '9999')
 
     
